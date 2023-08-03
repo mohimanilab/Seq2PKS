@@ -21,13 +21,13 @@ Before running Seq2PKS, ensure that the following packages are installed:
 The Seq2PKS pipeline contains five major steps:
 ### Detect Polyketide Biosynthetic Gene Clusters (BGCs), Modules, and Domains:
 This step uses antismash to detect polyketide Biosynthetic gene clusters (BGCs), Modules, and Domains. The parsed result from antismash are stored in the folder **parsed_result**
-### Identity AT domain specificity 
+### Identify AT domain specificity 
 In this step, a pre-trained machine learning model is used to predict the AT domain specificity for all AT domains in each BGC. The result for this step are being stored in the folder **specificity_result**
 ### Predict structure order
 In this step, the assembled order of monomers being recruited by each gene in the BGC is predicted. The result for this step are being stored in the folder **rank**
 ### Construct backbone
 In this step, The AT domain specificity is combined with other domain information to obtain the monomer corresponding to each module. These monomers are then connected to form the backbone following the order predicted in the previous step. The result for this step are being stored in the folder **backbone** 
-### Apply post-modification and score against the input spectrum file. 
+### Apply post-modification and score against the input spectrum file
 In this step, the genes that responsible for post-modification are being detected using HMM search. Then the corresponding modifications are applied to the backbone using core2pks. The candidate compounds are scored against spectrum using dereplicator+ or moldiscovery. The result for this step are being stored in the folder **compound** 
 
 
