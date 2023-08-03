@@ -5,7 +5,7 @@ Seq2PKS is a powerful tool designed to identify novel polyketide products based 
 
 The below graph is the overall pipeline for Seq2PKS.
 
-![Screenshot](image/seq2pks_overview.png)
+![Screenshot](image/seq2PKS_pipeline.png)
 
 ## Pre-request
 Before running Seq2PKS, ensure that the following packages are installed:
