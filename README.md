@@ -32,7 +32,7 @@ In this step, the genes that responsible for post-modification are being detecte
 
 
 ## Running Seq2PKS on computer
-Seq2PKS currently can take either Ncbi_id or fasta file as input. Here are the input parameters for the software.
+Seq2PKS currently can take either ncbi_id or fasta file as input. Here are the input parameters for the software.
 
 * `ncbi_id` ncbi_id for the input sequence
 * `sequence_file` path to the sequence file
@@ -62,12 +62,12 @@ python main.py \
 ```
 
 
-And some optional parameters inside the function
+And some optional parameters inside the post-modification function
 
 * `maxdepth`  The maximum depth of post-modifications applied on backbones
 * `maxspon` The maximum number of primary reactions to be considered
 * `maxringsadd` The maximum number of 6-member or 5-member rings applied on backbones
-* `mode` 3 different mode to apply post-modifications, mode 0 input all possible modifications to the dereplicator software, mode 2 add some restriction on the basis of mode 0
+* `mode` 2 different mode to apply post-modifications. Mode 0 input all possible modifications to the dereplicator software, and mode 2 add some restriction on the basis of mode 0
 
 Here is the default number of these optional parameters
 
