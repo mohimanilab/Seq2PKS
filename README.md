@@ -74,7 +74,7 @@ We have the sample run result included in the **test_result** folder for testing
 python main.py \
 --ncbi_id DQ149987.1 \
 --pattern dereplicator_plus \
---spectrum_path sample_spectram.mzML \
+--spectrum_path sample_spectra.mzML \
 --smile_compound 'CC=1CC(C)C(O)C(CC)C(O)C(C)C=C(C)C=C(OC)C(=O)OC(C(C(C(C3(O)CC(C(C(C=CC)O3)C)OC2OC(C(OC(=O)N)C(O)C2)C)C)O)C)C(C=CC=1)OC' \
 --output_folder test_result
 ```
