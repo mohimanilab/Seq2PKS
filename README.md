@@ -1,8 +1,10 @@
 # Seq2PKS - Discovering modular type I Cis-AT polyketide natural products by integrating computational mass spectrometry and genome mining
 
 ## Introduction
-Seq2PKS is a robust tool designed to identify novel polyketide products from input microbial genomes. By employing a series of meticulously crafted steps, it can detect biosynthetic gene clusters (BGCs), predict domain specificity, assemble monomers into backbones, apply post-modifications, and score compounds against input spectra.
-The following graph represents the overall pipeline for Seq2PKS.
+
+Type 1 Polyketides are a major class of natural products that are used as antiviral, antibiotic, antifungal, antiparasitic, immunosuppressant, and antitumor drugs. A recent analysis of hundreds of thousands of public microbial genomes has resulted in the discovery of over sixty thousand Type 1 Polyketide gene clusters. Despite these efforts, the molecular products for only 80 of these gene clusters have been characterized, and the product for the majority of these gene clusters remains unknown. The existing technology for characterizing novel polyketides is based on bioactivity-guided purification, an expensive and time-consuming ef- fort that is limited to highly abundant molecular products. 
+
+To overcome this challenge and identify the molecular product of polyketide gene clusters in high-throughput, we present Seq2PKS, a machine learning algorithm for predicting the chemical structure of the molecular product of Type 1 polyketide gene clusters. To enhance accuracy, Seq2PKS predicts hundreds or thousands of putative structures for each gene cluster, and then the correct structure is identified among these predictions using a mass spectral database search. 
 
 ![Screenshot](image/seq2PKS_pipeline.png)
 
