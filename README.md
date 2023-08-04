@@ -2,12 +2,14 @@
 
 ## Introduction
 Seq2PKS is a robust tool designed to identify novel polyketide products from input microbial genomes. By employing a series of meticulously crafted steps, it can detect biosynthetic gene clusters (BGCs), predict domain specificity, assemble monomers into backbones, apply post-modifications, and score compounds against input spectra.
-
 The following graph represents the overall pipeline for Seq2PKS.
 
 ![Screenshot](image/seq2PKS_pipeline.png)
 
+Seq2PKS framework. Starting with the microbial genome, (a) polyketide domains and enzymes are annotated by genome mining, (M1: module 1; AT: acyltransferase; KS: ketosynthase; DH: dehydratase; KR: ketoreductase) (b) specificity of the AT-domains are predicted, and the substrates are obtained by combining the specificity with other domains in each module (mal: malonyl-CoA; mmal: methylmalonyl-CoA; mxmal: methoxymalonyl-CoA). (c) The order of assembly pathway is predicted, where the true assembly order is obtained by switching the substrate produced by the two genes highlighted by the orange arrow, (d), post-assembly modifications are incorporated, and (e) mature structures are searched against mass spectra using Dereplicator+. The arrows represent the fragmentation process of the obtained molecule, and the peaks in mass spectra that are annotated by the fragments are highlighted in red.
+
 ## Pre-request
+The Seq2PKS are implemented with python 3.8  
 Before running Seq2PKS, ensure that the following packages are installed:
 
 * `pandas`
@@ -75,7 +77,8 @@ python main.py \
 --output_folder test_result
 ```
 The identified compounds are stored in the file **test_result/DQ149987/compound/backbone2pks_result/database.csv**.  
-The generated compounds are scored against the input spectrum file using dereplicator+, the obtained match are stored in **test_result/DQ149987/compound/backbone2pks_result/psms.tsv**.
+The generated compounds are scored against the input spectrum file using dereplicator+, the obtained match are stored in **test_result/DQ149987/compound/backbone2pks_result/psms.tsv**.  
+you can terminate the program if the last step takes too long since this sample run is only for testing purposes
 
 ## Seq2PKS web server
 
