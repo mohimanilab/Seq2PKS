@@ -9,7 +9,7 @@ The following graph represents the overall pipeline for Seq2PKS.
 Seq2PKS framework. Starting with the microbial genome, (a) polyketide domains and enzymes are annotated by genome mining, (M1: module 1; AT: acyltransferase; KS: ketosynthase; DH: dehydratase; KR: ketoreductase) (b) specificity of the AT-domains are predicted, and the substrates are obtained by combining the specificity with other domains in each module (mal: malonyl-CoA; mmal: methylmalonyl-CoA; mxmal: methoxymalonyl-CoA). (c) The order of assembly pathway is predicted, where the true assembly order is obtained by switching the substrate produced by the two genes highlighted by the orange arrow, (d), post-assembly modifications are incorporated, and (e) mature structures are searched against mass spectra using Dereplicator+. The arrows represent the fragmentation process of the obtained molecule, and the peaks in mass spectra that are annotated by the fragments are highlighted in red.
 
 ## Pre-request
-The Seq2PKS are implemented with python 3.8  
+The Seq2PKS is implemented with Python 3.8  
 Before running Seq2PKS, ensure that the following packages are installed:
 
 * `pandas`
