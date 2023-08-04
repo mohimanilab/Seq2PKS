@@ -16,6 +16,9 @@ Before running Seq2PKS, ensure that the following packages are installed:
 * `antismash`
 * `transeq`
 * `sk-learn`
+* `Bio`
+* `blast`
+
 
 ## Seq2PKS pipeline
 The Seq2PKS pipeline contains five major steps:
@@ -34,49 +37,47 @@ In this step, the genes that responsible for post-modification are being detecte
 ## Running Seq2PKS on computer
 Seq2PKS currently can take either ncbi_id or fasta file as input. Here are the input parameters for the software.
 
-* `ncbi_id` ncbi_id for the input sequence
-* `sequence_file` path to the sequence file
-* `sequence_id` name for the sequence file
-* `output_folder` output folder to store the result
-* `spectrum_path` path to the spectrum file
-* `pattern` algorithm for spectrum matching can take "moldiscovery" or "dereplicator+" as input
+* `ncbi_id` Ncbi_id for the input sequence
+* `sequence_file` Path to the sequence file
+* `sequence_id` Name for the sequence file
+* `output_folder` Output folder to store the result
+* `spectrum_path` Path to the spectrum file
+* `pattern` Algorithm for spectrum matching can take "moldiscovery" or "dereplicator+" as input
 * `n_jobs` Number of parallel jobs during computation
+* `smile_compound` Expected smile string for the compound if known
 
 Here is the sample code for running Seq2PKS with ncbi id as input:
 ```
 python main.py \
 --ncbi_id U24241.2 \
---pattern dereplicator+ \
---spectrum_path PDorr_0045_14Sep12_Lynx_12-06-05.mzXML \
+--pattern dereplicator_plus \
+--spectrum_path sample_spectram.mzML \
 --output_folder result
 ```
 
-Here is the sample code for running Seq2PKS with a fasta file as input:
+Here is the sample command for running Seq2PKS with a fasta file as input:
 ```
 python main.py \
 --sequence_file azalomycin_F.fasta \
 --sequence_id azalomycin_F \
---pattern dereplicator+ \
---spectrum_path PDorr_0045_14Sep12_Lynx_12-06-05.mzXML\
+--pattern dereplicator_plus \
+--spectrum_path sample_spectram.mzML \
 --output_folder result
 ```
-
-
-And some optional parameters inside the post-modification function
-
-* `maxdepth`  The maximum depth of post-modifications applied on backbones
-* `maxspon` The maximum number of primary reactions to be considered
-* `maxringsadd` The maximum number of 6-member or 5-member rings applied on backbones
-* `mode` 2 different mode to apply post-modifications. Mode 0 input all possible modifications to the dereplicator software, and mode 2 add some restriction on the basis of mode 0
-
-Here is the default number of these optional parameters
-
+## Sample run
+We have the sample run result included in the **test_result** folder.
+The command for the sample run is:
 ```
-maxdepth 5
-maxspon 2
-maxringsadd 2
-mode 0
+python main.py \
+--ncbi_id DQ149987.1 \
+--pattern dereplicator_plus \
+--spectrum_path sample_spectram.mzML \
+--smile_compound 'CC=1CC(C)C(O)C(CC)C(O)C(C)C=C(C)C=C(OC)C(=O)OC(C(C(C(C3(O)CC(C(C(C=CC)O3)C)OC2OC(C(OC(=O)N)C(O)C2)C)C)O)C)C(C=CC=1)OC' \
+--output_folder test_result
 ```
+The identified compounds are stored in file **test_result/DQ149987/compound/backbone2pks_result/database.csv**.
+The generated compounds are scored against the input spectrum file using dereplicator+, the obtained match are stored in **test_result/DQ149987/compound/backbone2pks_result/psms.tsv**.
+
 ## Seq2PKS web server
 
 Coming soon: Seq2PKS will soon be supported as a web service at npanalysis.org
