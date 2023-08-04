@@ -1,9 +1,9 @@
 # Seq2PKS - Discovering modular type I Cis-AT polyketide natural products by integrating computational mass spectrometry and genome mining
 
 ## Introduction
-Seq2PKS is a powerful tool designed to identify novel polyketide products based on input microbial genomes. By leveraging a series of carefully crafted steps, it can detect biosynthetic gene clusters (BGCs), predict domain specificity, assemble monomers into backbones, apply post-modifications, and score compounds against input spectra.
+Seq2PKS is a robust tool designed to identify novel polyketide products from input microbial genomes. By employing a series of meticulously crafted steps, it can detect biosynthetic gene clusters (BGCs), predict domain specificity, assemble monomers into backbones, apply post-modifications, and score compounds against input spectra.
 
-The below graph is the overall pipeline for Seq2PKS.
+The following graph represents the overall pipeline for Seq2PKS.
 
 ![Screenshot](image/seq2PKS_pipeline.png)
 
@@ -44,9 +44,9 @@ Seq2PKS currently can take either ncbi_id or fasta file as input. Here are the i
 * `spectrum_path` Path to the spectrum file
 * `pattern` Algorithm for spectrum matching can take "moldiscovery" or "dereplicator+" as input
 * `n_jobs` Number of parallel jobs during computation
-* `smile_compound` Expected smile string for the compound if known
+* `smile_compound` Expected SMILE string for the compound if known
 
-Here is the sample code for running Seq2PKS with ncbi id as input:
+Here is an example of running Seq2PKS with ncbi id as input:
 ```
 python main.py \
 --ncbi_id U24241.2 \
@@ -55,7 +55,7 @@ python main.py \
 --output_folder result
 ```
 
-Here is the sample command for running Seq2PKS with a fasta file as input:
+Here is an example of running Seq2PKS with a fasta file as input:
 ```
 python main.py \
 --sequence_file azalomycin_F.fasta \
@@ -65,8 +65,7 @@ python main.py \
 --output_folder result
 ```
 ## Sample run
-We have the sample run result included in the **test_result** folder.
-The command for the sample run is:
+We have the sample run result included in the **test_result** folder for testing purposes. You should be able to generate the exact same result in the folder by following the below command:
 ```
 python main.py \
 --ncbi_id DQ149987.1 \
@@ -75,7 +74,7 @@ python main.py \
 --smile_compound 'CC=1CC(C)C(O)C(CC)C(O)C(C)C=C(C)C=C(OC)C(=O)OC(C(C(C(C3(O)CC(C(C(C=CC)O3)C)OC2OC(C(OC(=O)N)C(O)C2)C)C)O)C)C(C=CC=1)OC' \
 --output_folder test_result
 ```
-The identified compounds are stored in file **test_result/DQ149987/compound/backbone2pks_result/database.csv**.
+The identified compounds are stored in the file **test_result/DQ149987/compound/backbone2pks_result/database.csv**.  
 The generated compounds are scored against the input spectrum file using dereplicator+, the obtained match are stored in **test_result/DQ149987/compound/backbone2pks_result/psms.tsv**.
 
 ## Seq2PKS web server
