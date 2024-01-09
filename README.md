@@ -16,27 +16,29 @@ The Seq2PKS pipeline contains five major steps:
 
 ### Detect polyketide Biosynthetic gene clusters (BGCs), Modules and Domains
 
-This step use antismash to detect polyketide Biosynthetic gene clusters (BGCs), Modules and Domains. The parsed result from antismash are stored in the folder **parsed_result**.
+This step involves using antiSMASH to identify polyketide biosynthetic gene clusters (BGCs), modules, and domains. The corresponding code is located in the **genome2genes** folder. When an NCBI ID is provided as input, Seq2PKS initially employs the esearch tool to download the relevant sequence. In cases where a sequence is directly provided, it is processed using the installed version of antiSMASH. The result from antiSMASH will be stored in the folder **antismash_result**. Once the antiSMASH analysis is complete, Seq2PKS parses the output to retain only essential information for subsequent steps. The refined output from antiSMASH is stored within the **parsed_result folder**, located in the results directory.
 
 ### Identify AT domain specificity 
 
-In this step, a pre-trained machine learning model is used to predict the AT domain specificity for all AT domain in each BGC. The result for this step are being stored in the folder **specificity_result**.
+In this step, a pre-trained machine learning model is employed to ascertain the AT domain specificity across all AT domains within each BGC. Relevant code for this process can be found in the **genome2genes** folder. Initially, the signature of each AT domain is extracted through alignment with a reference sequence. Subsequently, this signature is input into the model to generate the predicted results. The outcomes of this step are stored in the **specificity_result** folder.
 
 ### Predict structure order
 
-In this step, the assemble order for monomers being recruited by each gene in the BGC is being predicted. The result for this step are being sotred in the folder **rank.**
+In this step, we predict the assembly sequence of monomers recruited by each gene in the biosynthetic gene cluster (BGC). The code pertinent to this procedure is located in the **genes2domains** folder. The process begins with the extraction of the docking domain sequences from each gene. These sequences are then input into the model, which ranks all potential pathways. The ranked pathways are essential for constructing the molecular backbone. The outcomes of this step are stored in the **rank** folder.
 
 ### Construct backbone
 
-In this step, The AT domain specificity are combined with other domain information to obtain the monomer correspond to each module. These monomers are then being connected to form the backbone following the order predicted in the previous step. The result for this step are being sotred in the folder **backbone**.
+In this step, AT domain specificity is merged with information from other domains to identify the mature monomers corresponding to each module, using a rule-based model. These monomers are then sequentially linked to create the backbone, adhering to the assembly order predicted in the preceding step. The code relevant to this process is housed in the **domains2backbone** folder. The outcomes of this step are compiled and stored in the **backbone** folder.
 
-### apply post-modification and score against input spectrum file. 
+### Apply post-modification and score against the input spectrum file. 
 
-In this step, the genes that responsible for post-modification are being detected using HMM search. Then the corresponding modifications are being applied to the backbone using core2pks. The candidate compounds are scored against spectrum using dereplicator+ or moldiscovery. The result for this step are being sotred in the folder **compound**.
+In this step, post-modification genes responsible for various reactions are identified through HMM search. Subsequently, the corresponding modifications for each gene are applied to the molecular backbone using a graph-based model. The resulting candidate compounds are then scored against spectrums using tools like Dereplicator+ or Moldiscovery. The code relevant to this process is housed in the **backbone2pks** folder. The results for this step are being stored in the folder **compound**.
 
 ## Installing Seq2PKS
 
 ### Pre-built Docker image(Recommended)
+
+This is the most straightforward way to install Seq2PKS. 
 
 ```
 wget https://github.com/mohimanilab/Seq2PKS/main/docker/seq2pks.tar
@@ -47,15 +49,14 @@ sudo docker load -i seq2pks.tar
 
 #### Installing Other Dependencies
 
-If not present you will also need to install:
+If not present, you will also need to install the following:
 
-- [emboss](https://emboss.sourceforge.net/)
 - [ncbi-blast+](https://blast.ncbi.nlm.nih.gov/doc/blast-help/downloadblastdata.html#downloadblastdata)
 
 For example, on Ubuntu,
 
 ```
-sudo apt-get install emboss ncbi-blast+
+sudo apt-get install NCBI-blast+
 ```
 
 - [singularity](https://github.com/sylabs/singularity/releases)
@@ -64,7 +65,7 @@ Follow the [instructions](https://docs.sylabs.io/guides/4.0/user-guide/quick_sta
 
 #### Local environment
 
-Below packages are needed along with python.
+The below packages are needed along with Python.
 
 * `git`
 * `pandas`
@@ -74,7 +75,7 @@ Below packages are needed along with python.
 * `scikit-learn`
 * `biopython`
 
-For example, using `conda`,
+For example, using `conda,`
 
 ```
 conda create -n "Seq2PKS" pandas numpy rdkit antismash scikit-learn biopython -c conda-forge -c bioconda
@@ -93,7 +94,7 @@ git clone https://github.com/mohimanilab/Seq2PKS.git
 
 ## Running Seq2PKS
 
-Seq2PKS currently can take either Ncbi_id or fasta file as input. Here are the input parameters for the software.
+Seq2PKS currently can take either NCBI ID or fasta file as input. Here are the input parameters for the software.
 
 * `ncbi_id` ncbi_id for the input sequence
 * `sequence_file` path to the sequence file
@@ -119,7 +120,7 @@ Interacting with the container,
 sudo docker run -it -v $(pwd):/usr/src/app/mnt --privileged --entrypoint /bin/bash seq2pks
 ```
 
-Here is an example of running with a FASTA file as input:
+Here is an example of running with a FASTA file and a MZ file as input:
 
 ```
 cp /path/to/source/{sample.fasta,sample_spectra.mzML} .
