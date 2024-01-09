@@ -8,7 +8,7 @@ Type 1 Polyketides are a major class of natural products that are used as antivi
 
 To overcome this challenge and identify the molecular product of polyketide gene clusters in high-throughput, we present Seq2PKS, a machine learning algorithm for predicting the chemical structure of the molecular product of Type 1 polyketide gene clusters. To enhance accuracy, Seq2PKS predicts hundreds or thousands of putative structures for each gene cluster, and then the correct structure is identified among these predictions using a mass spectral database search. 
 
-![seq2pks_overview](images\seq2pks_overview.png)
+![Screenshot](image/seq2PKS_pipeline.png)
 
 ## Seq2PKS pipeline
 
