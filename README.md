@@ -62,7 +62,7 @@ The results presented above were generated using the sample Chalcomycin BGC sequ
 Below is the description of the Seq2PKS pipeline for Linux users, outlining how to obtain results from its various steps. The pipeline comprises five principal steps:
 
 
-### Detect polyketide Biosynthetic Gene Clusters (BGCs), Modules and Domains
+### Detect polyketide biosynthetic gene clusters (BGCs), modules and domains
 
 This step involves using antiSMASH to identify polyketide biosynthetic gene clusters (BGCs), modules, and domains. The corresponding code is located in the **genome2genes** folder. When an NCBI ID is provided as input, Seq2PKS initially employs the esearch tool to download the relevant sequence. In cases where a sequence is directly provided, it is processed using the installed version of antiSMASH. The result from antiSMASH will be stored in the folder **antismash_result**. Once the antiSMASH analysis is complete, Seq2PKS parses the output to retain only essential information for subsequent steps. The refined output from antiSMASH is stored within the **parsed_result** folder, located in the results directory.
 
