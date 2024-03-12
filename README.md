@@ -26,7 +26,7 @@ After uploading the data, it will appear under the Data tab.
 
 ![Screenshot](image/Step6.png)
 
-To start a new PKS workflow, the user can click on the dashboard tab. To create a new project, click the plus icon.
+To start a new PKS workflow, the user can click on the Dashboard tab. To create a new project, click the plus icon.
 
 ![Screenshot](image/Step7.png)
 
@@ -62,7 +62,7 @@ The results presented above were generated using the sample Chalcomycin BGC sequ
 Below is the description of the Seq2PKS pipeline for Linux users, outlining how to obtain results from its various steps. The pipeline comprises five principal steps:
 
 
-### Detect polyketide Biosynthetic gene clusters (BGCs), Modules and Domains
+### Detect polyketide Biosynthetic Gene Clusters (BGCs), Modules and Domains
 
 This step involves using antiSMASH to identify polyketide biosynthetic gene clusters (BGCs), modules, and domains. The corresponding code is located in the **genome2genes** folder. When an NCBI ID is provided as input, Seq2PKS initially employs the esearch tool to download the relevant sequence. In cases where a sequence is directly provided, it is processed using the installed version of antiSMASH. The result from antiSMASH will be stored in the folder **antismash_result**. Once the antiSMASH analysis is complete, Seq2PKS parses the output to retain only essential information for subsequent steps. The refined output from antiSMASH is stored within the **parsed_result** folder, located in the results directory.
 
@@ -84,7 +84,7 @@ In this step, post-modification genes responsible for various reactions are iden
 
 ## Installing Seq2PKS locally
 
-### Pre-built Docker image(Recommended)
+### Pre-built Docker image (Recommended)
 
 This is the most straightforward way to install Seq2PKS. 
 
@@ -93,7 +93,7 @@ wget https://github.com/mohimanilab/Seq2PKS/main/docker/seq2pks.tar
 sudo docker load -i seq2pks.tar
 ```
 
-### Manually install on Unix-based system(Not recommended)
+### Manual install on Unix-based system(Not recommended)
 
 #### Installing Other Dependencies
 
@@ -195,7 +195,7 @@ cp /path/to/source/{sample.fasta,sample_spectra.mzML} .
 python main.py --sequence_file sample.fasta --sequence_id sample --pattern dereplicator_plus --spectrum_path sample_spectra.mzML --output_folder result
 ```
 
-We have the sample run result included in the "test_result" folder for testing purposes. By executing the following command, user should achieve the same results, which are stored in the **test_result** folder:
+We have the sample run result included in the "test_result" folder for testing purposes. By executing the following command, user should achieve the same results, which are stored in the "test_result" folder:
 
 ```
 python main.py --ncbi_id DQ149987.1 --pattern dereplicator_plus --spectrum_path sample_spectram.mzML --smile_compound 'CC=1CC(C)C(O)C(CC)C(O)C(C)C=C(C)C=C(OC)C(=O)OC(C(C(C(C3(O)CC(C(C(C=CC)O3)C)OC2OC(C(OC(=O)N)C(O)C2)C)C)O)C)C(C=CC=1)OC' --output_folder test_result
