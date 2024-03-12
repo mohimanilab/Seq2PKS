@@ -4,7 +4,7 @@ Discovering modular type I Cis-AT polyketide natural products by integrating com
 
 ## Seq2PKS web server
 
-The web server for Seq2PKS is available at \href{https://run.npanalysis.org/}{https://run.npanalysis.org/}. Guidelines for using the server are shown below. The test data for the web server is included in the folder **server_sample_input**.
+The web server for Seq2PKS is available at [https://run.npanalysis.org/](https://run.npanalysis.org/). Guidelines for using the server are shown below. The test data for the web server is included in the folder **server_sample_input**.
 
 The Seq2PKS pipeline requires paired genomic and mass spectrometry data. After getting to the landing page, proceed to the Dashboard.
 
