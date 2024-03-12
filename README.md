@@ -97,7 +97,7 @@ sudo docker load -i seq2pks.tar
 
 #### Installing Other Dependencies
 
-If not present, you will also need to install the following:
+If not present, user will also need to install the following:
 
 - [ncbi-blast+](https://blast.ncbi.nlm.nih.gov/doc/blast-help/downloadblastdata.html#downloadblastdata)
 
@@ -113,7 +113,7 @@ Follow the [instructions](https://docs.sylabs.io/guides/4.0/user-guide/quick_sta
 
 #### Local environment
 
-The below packages are needed along with Python.
+The below packages are needed along with Python. User can use the provided seq2pks.yml to see all the dependences.
 
 * `git`
 * `pandas`
@@ -155,7 +155,7 @@ Seq2PKS currently can take either NCBI ID or fasta file as input. Here are the i
 
 ### Docker(Recommended)
 
-Create your working directory,
+Create user working directory,
 
 ```
 mkdir Seq2PKS
@@ -175,7 +175,7 @@ cp /path/to/source/{sample.fasta,sample_spectra.mzML} .
 python main.py --sequence_file sample.fasta --sequence_id sample --pattern dereplicator_plus --spectrum_path sample_spectra.mzML --output_folder ./mnt/result
 ```
 
-We have the sample run result included in the "test_result" folder for testing purposes. You should be able to generate the exact same result in the folder by following the below command,
+We have the sample run result included in the "test_result" folder for testing purposes. User should be able to generate the exact same result in the folder by following the below command,
 
 ```
 python main.py --ncbi_id DQ149987.1 --pattern dereplicator_plus --spectrum_path sample_spectram.mzML --smile_compound 'CC=1CC(C)C(O)C(CC)C(O)C(C)C=C(C)C=C(OC)C(=O)OC(C(C(C(C3(O)CC(C(C(C=CC)O3)C)OC2OC(C(OC(=O)N)C(O)C2)C)C)O)C)C(C=CC=1)OC' --output_folder test_result
@@ -195,7 +195,7 @@ cp /path/to/source/{sample.fasta,sample_spectra.mzML} .
 python main.py --sequence_file sample.fasta --sequence_id sample --pattern dereplicator_plus --spectrum_path sample_spectra.mzML --output_folder result
 ```
 
-We have the sample run result included in the "test_result" folder for testing purposes. By executing the following command, you should achieve the same results, which are stored in the **test_result** folder:
+We have the sample run result included in the "test_result" folder for testing purposes. By executing the following command, user should achieve the same results, which are stored in the **test_result** folder:
 
 ```
 python main.py --ncbi_id DQ149987.1 --pattern dereplicator_plus --spectrum_path sample_spectram.mzML --smile_compound 'CC=1CC(C)C(O)C(CC)C(O)C(C)C=C(C)C=C(OC)C(=O)OC(C(C(C(C3(O)CC(C(C(C=CC)O3)C)OC2OC(C(OC(=O)N)C(O)C2)C)C)O)C)C(C=CC=1)OC' --output_folder test_result
